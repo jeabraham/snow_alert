@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+   <key>Label</key>
+   <string>com.yourname.snow-alert</string>
+
+   <key>ProgramArguments</key>
+   <array>
+     <string>/usr/local/bin/python3</string>
+     <string>/Users/you/path-to-repo/src/main.py</string>
+   </array>
+
+   <key>StartInterval</key>
+   <integer>21600</integer>  <!-- every 6h; tweak as needed -->
+
+   <key>RunAtLoad</key>
+   <true/>
+
+   <key>StandardOutPath</key>
+   <string>/tmp/snow-alert.log</string>
+
+   <key>StandardErrorPath</key>
+   <string>/tmp/snow-alert.err</string>
+ </dict>
+</plist>

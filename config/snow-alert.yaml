@@ -1,0 +1,16 @@
+station:
+  sunshine_url: "https://www.nwrfc.noaa.gov/snow/snowplot.cgi?SUNQ1="
+
+threshold:
+  swe_change_cm: 5.0    # minimum SWE change (cm) to trigger an alert
+  use_depth_instead: false  # if true, check snow_depth delta instead of SWE
+
+notification:
+  enabled: true
+  method: "console"  # future methods: email, pushover, webhook, mqtt
+  email:
+    to: "you@example.com"
+    from: "alerts@example.com"
+    smtp_server: "smtp.example.com"
+
+state_file: "data/last_state.json"
