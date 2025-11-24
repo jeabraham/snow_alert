@@ -1,16 +1,38 @@
+# config/snow-alert.yaml
+
 station:
   sunshine_url: "https://www.nwrfc.noaa.gov/snow/snowplot.cgi?SUNQ1="
 
 threshold:
-  swe_change_cm: 5.0    # minimum SWE change (cm) to trigger an alert
-  use_depth_instead: false  # if true, check snow_depth delta instead of SWE
+  # Per-window SWE change thresholds (centimeters)
+  swe_change_cm:
+    h6: 5.0
+    h12: 5.0
+    h24: 5.0
+    h48: 5.0
+    w1: 5.0
+  # Water-to-snow conversion ratio (e.g., 10.0 means 1" water -> 10" snow)
+  water_to_snow_ratio: 10.0
 
 notification:
   enabled: true
-  method: "console"  # future methods: email, pushover, webhook, mqtt
-  email:
-    to: "you@example.com"
-    from: "alerts@example.com"
-    smtp_server: "smtp.example.com"
+  # console | ifttt | hubitat | homekit
+  method: "console"
+
+  # IFTTT Webhook
+  ifttt:
+    key: ""          # IFTTT Webhooks key
+    event: "snow_alert"  # Event name
+
+  # Hubitat Cloud Webhook (Maker API)
+  hubitat:
+    url: ""          # Full Maker API endpoint URL
+    token: ""        # Optional if embedded in url
+    device_id: ""    # Optional: target device/virtual device
+
+  # HomeKit via Homebridge (e.g., HTTP Switch/Sensor plugin)
+  homekit:
+    url: ""          # Endpoint to toggle/notify
+    auth_token: ""   # Optional bearer/basic token
 
 state_file: "data/last_state.json"
